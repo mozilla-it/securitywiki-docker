@@ -1,0 +1,23 @@
+name: CI (Docker Build)
+
+on: [ push, pull_request_target ]
+
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+    steps:
+      - name: Echo tag
+        id: echotag
+        run: |
+          echo "Building an image with the following tag based on git commit:"
+          echo $GITHUB_SHA
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Image Only
+        id: build
+        env:
+          ECR_REGISTRY: ci-run
+          ECR_REPOSITORY: securitywiki
+          IMAGE_TAG: $GITHUB_SHA
+        run: docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .

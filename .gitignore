@@ -1,0 +1,7 @@
+.env
+etc/ssl/*.key
+etc/ssl/*.crt
+etc/ssl/*.pem
+etc/ssl/*.csr
+**/secrets.yaml.in
+**/secret.yaml.in
