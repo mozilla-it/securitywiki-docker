@@ -37,7 +37,7 @@ RUN set -eux; \
 	docker-php-ext-install -j "$(nproc)" mbstring xml && \
 	pecl install memcached && \
 	docker-php-ext-enable memcached && \
-	echo "extension=memcache.so" >> /usr/local/etc/php/conf.d/memcached.ini && \
+	echo "extension=memcached.so" >> /usr/local/etc/php/conf.d/memcached.ini && \
 	apt-get purge -y --auto-remove && \
 	apt-get clean -y && \
 	apt-get autoclean -y && \
