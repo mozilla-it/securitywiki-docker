@@ -55,6 +55,7 @@ WORKDIR /var/www/html
 RUN git clone https://gerrit.wikimedia.org/r/mediawiki/skins/CologneBlue  --branch ${MEDIAWIKI_BRANCH} skins/CologneBlue && \
 	git clone https://gerrit.wikimedia.org/r/mediawiki/skins/Modern  --branch ${MEDIAWIKI_BRANCH} skins/Modern  && \
 	git clone https://github.com/DaSchTour/Cavendish.git skins/Cavendish && \
+	cd skins/Cavendish && git reset --hard 0ab0042265ce45da972195d97fe3ecfb53107bc7 && cd ../../ && \
 	git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Auth_remoteuser --branch ${MEDIAWIKI_BRANCH} extensions/Auth_remoteuser
 
 # Copy settings
